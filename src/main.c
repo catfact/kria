@@ -486,17 +486,17 @@ static void tr0Timer_callback(void* o) {
 	monomeFrameDirty++;
 
 	// write to DAC
-	spi_selectChip(SPI,DAC_SPI);
-	spi_write(SPI,0x31);	// update A
-	spi_write(SPI,cv0>>4);
-	spi_write(SPI,cv0<<4);
-	spi_unselectChip(SPI,DAC_SPI);
+	spi_selectChip(DAC_SPI,DAC_SPI_NPCS);
+	spi_write(DAC_SPI,0x31);	// update A
+	spi_write(DAC_SPI,cv0>>4);
+	spi_write(DAC_SPI,cv0<<4);
+	spi_unselectChip(DAC_SPI,DAC_SPI_NPCS);
 
-	// spi_selectChip(SPI,DAC_SPI);
-	// spi_write(SPI,0x38);	// update B
-	// spi_write(SPI,cv1>>4);
-	// spi_write(SPI,cv1<<4);
-	// spi_unselectChip(SPI,DAC_SPI);
+	// spi_selectChip(DAC_SPI,DAC_SPI_NPCS);
+	// spi_write(DAC_SPI,0x38);	// update B
+	// spi_write(DAC_SPI,cv1>>4);
+	// spi_write(DAC_SPI,cv1<<4);
+	// spi_unselectChip(DAC_SPI,DAC_SPI_NPCS);
 }
 
 
@@ -691,17 +691,17 @@ static void tr1Timer_callback(void* o) {
 	monomeFrameDirty++;
 
 	// write to DAC
-	// spi_selectChip(SPI,DAC_SPI);
-	// spi_write(SPI,0x31);	// update A
-	// spi_write(SPI,cv0>>4);
-	// spi_write(SPI,cv0<<4);
-	// spi_unselectChip(SPI,DAC_SPI);
+	// spi_selectChip(DAC_SPI,DAC_SPI_NPCS);
+	// spi_write(DAC_SPI,0x31);	// update A
+	// spi_write(DAC_SPI,cv0>>4);
+	// spi_write(DAC_SPI,cv0<<4);
+	// spi_unselectChip(DAC_SPI,DAC_SPI_NPCS);
 
-	spi_selectChip(SPI,DAC_SPI);
-	spi_write(SPI,0x38);	// update B
-	spi_write(SPI,cv1>>4);
-	spi_write(SPI,cv1<<4);
-	spi_unselectChip(SPI,DAC_SPI);
+	spi_selectChip(DAC_SPI,DAC_SPI_NPCS);
+	spi_write(DAC_SPI,0x38);	// update B
+	spi_write(DAC_SPI,cv1>>4);
+	spi_write(DAC_SPI,cv1<<4);
+	spi_unselectChip(DAC_SPI,DAC_SPI_NPCS);
 }
 
 static void phase_reset0() {
@@ -2020,11 +2020,11 @@ int main(void)
 	clock_temp = 10000; // out of ADC range to force tempo
 
 	// setup daisy chain for two dacs
-	// spi_selectChip(SPI,DAC_SPI);
-	// spi_write(SPI,0x80);
-	// spi_write(SPI,0xff);
-	// spi_write(SPI,0xff);
-	// spi_unselectChip(SPI,DAC_SPI);
+	// spi_selectChip(DAC_SPI,DAC_SPI_NPCS);
+	// spi_write(DAC_SPI,0x80);
+	// spi_write(DAC_SPI,0xff);
+	// spi_write(DAC_SPI,0xff);
+	// spi_unselectChip(DAC_SPI,DAC_SPI_NPCS);
 
 	while (true) {
 		check_events();
